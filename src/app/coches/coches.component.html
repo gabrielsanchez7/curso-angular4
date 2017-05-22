@@ -1,0 +1,46 @@
+<style>
+	label {
+		width: 100px;
+		display: inline-block;
+	}
+</style>
+
+<h1>Componente de coches</h1>
+
+<form #formCoche="ngForm" (ngSubmit)="onSubmit(); formCoche.reset();">
+	<label>Nombre:</label>
+	<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="coche.nombre" required>
+	<span *ngIf="nombre.touched && !nombre.valid">El nombre del coche es incorrecto!</span>
+	<br><br>
+
+	<label>Caballaje:</label>
+	<input type="text" name="caballaje" #caballaje="ngModel" [(ngModel)]="coche.caballaje" required pattern="[0-9]+">
+	<span *ngIf="caballaje.touched && !caballaje.valid">El caballaje del coche es incorrecto!</span>
+	<br><br>
+
+	<label>Color:</label>
+	<input type="text" name="color" #color="ngModel" [(ngModel)]="coche.color" required pattern="[a-zA-Z#]+">
+	<span *ngIf="color.touched && !color.valid">El color del coche es incorrecto!</span>
+	<br><br>
+
+	<input type="submit" value="Guardar" [disabled]="!formCoche.form.valid">
+</form>
+
+<div>
+	<h4>Listado de coches:</h4>
+	<ul *ngFor="let coche of coches">
+		<li>Nombre: {{coche.nombre}}</li>
+		<li>Caballaje: {{coche.caballaje}} caballos de fuerza</li>
+		<li>Color: {{coche.color}}</li>
+		<br>
+	</ul>
+</div>
+
+<h4>Listado de artículos:</h4>
+<div *ngIf="articulos">
+	<ul *ngFor="let articulo of articulos">
+		<li>Id: {{articulo.id}}</li>
+		<li>Título: {{articulo.title}}</li>
+	</ul>
+</div>
+<span *ngIf="!articulos">Cargando archivos</span>
