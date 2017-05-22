@@ -19,12 +19,19 @@ exports.config = {
     defaultTimeoutInterval: 30000,
     print: function() {}
   },
+<<<<<<< HEAD
+  onPrepare() {
+    require('ts-node').register({
+      project: 'e2e/tsconfig.e2e.json'
+    });
+=======
   beforeLaunch: function() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
   },
   onPrepare() {
+>>>>>>> 376456cde48f8a8cb2ab30b3e3fa8b121da1b360
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
 };
